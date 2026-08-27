@@ -33,7 +33,7 @@
 }
 
 *,*::before,*::after{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth; overflow-x:hidden; width:100%;}
 body{
   margin:0;
   background:var(--paper);
@@ -42,6 +42,8 @@ body{
   font-size:16px;
   line-height:1.5;
   -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  width:100%;
 }
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
@@ -119,7 +121,7 @@ a{color:inherit;}
 }
 
 /* mini decorative timetable in hero */
-.hero__grid{display:flex; justify-content:center;}
+.hero__grid{display:flex; justify-content:center; overflow:hidden; padding:14px;}
 .mini-tt{
   width:100%; max-width:320px;
   background:var(--card);
@@ -338,33 +340,43 @@ a{color:inherit;}
   border:1px solid var(--line-strong);
   background:var(--card);
   overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  position:relative;
 }
 .timetable__daylabels{
   grid-column:2; grid-row:1;
   display:grid; grid-template-columns:repeat(5,1fr);
   border-bottom:1px solid var(--line-strong);
-  min-width:520px;
+  min-width:460px;
 }
 .timetable__daylabels span{
   text-align:center; padding:10px 4px;
   font-family:var(--mono); font-weight:600; font-size:.85rem;
   border-left:1px solid var(--line);
+  white-space:nowrap;
 }
 .timetable__daylabels span:first-child{border-left:none;}
+/* sticky so the time axis stays visible while the day columns scroll under it */
 .timetable__timelabels{
   grid-column:1; grid-row:2;
-  position:relative;
+  position:sticky;
+  left:0;
+  z-index:3;
+  background:var(--card);
+  box-shadow:2px 0 5px rgba(0,0,0,.08);
 }
 .timetable__timelabels span{
   position:absolute; left:0; right:6px; text-align:right;
   transform:translateY(-50%);
   font-family:var(--mono); font-size:.65rem; color:var(--ink-soft);
+  white-space:nowrap;
 }
 .timetable__grid{
   grid-column:2; grid-row:2;
   position:relative;
   display:grid; grid-template-columns:repeat(5,1fr);
-  min-width:520px;
+  min-width:460px;
   background-image:linear-gradient(to right, var(--line) 1px, transparent 1px);
   background-size: 20% 100%;
 }
@@ -390,6 +402,15 @@ a{color:inherit;}
   text-align:center;
   font-family:var(--mono); font-size:.66rem; color:var(--maroon-ink);
   padding:2px 4px;
+}
+
+.scroll-hint{
+  display:none;
+  font-family:var(--mono); font-size:.68rem; color:var(--ink-soft);
+  text-align:center; margin:8px 0 0;
+}
+@media (max-width:600px){
+  .scroll-hint{display:block;}
 }
 
 .gap-summary{margin-top:32px;}
@@ -438,4 +459,9 @@ a{color:inherit;}
   .form-row{flex-direction:column; align-items:stretch;}
   .field--narrow{flex:1 1 auto;}
   .site-foot__row{flex-direction:column; align-items:flex-start;}
+}
+@media (max-width:420px){
+  .wrap{padding:0 16px;}
+  .site-head__row{padding:14px 16px;}
+  .credit{padding:0 16px;}
 }
