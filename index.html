@@ -26,6 +26,7 @@
 
 <main>
 
+  <!-- HERO -->
   <section class="hero wrap">
     <div class="hero__copy">
       <p class="eyebrow">routine&nbsp;·&nbsp;gap&nbsp;·&nbsp;adda</p>
@@ -51,6 +52,7 @@
     </div>
   </section>
 
+  <!-- STEP 1: ADD FRIENDS -->
   <section id="build" class="section">
     <div class="wrap">
       <p class="section__eyebrow">step 1</p>
@@ -74,6 +76,7 @@
     </div>
   </section>
 
+  <!-- STEP 2: PICK WHO -->
   <section class="section section--muted">
     <div class="wrap">
       <p class="section__eyebrow">step 2</p>
@@ -87,6 +90,7 @@
     </div>
   </section>
 
+  <!-- RESULTS -->
   <section id="results" class="section results" hidden>
     <div class="wrap">
       <p class="section__eyebrow">step 3</p>
@@ -116,67 +120,7 @@
   <p class="credit">Made by Md. Lathfan Ibna Eusuf (Lipto)</p>
 </footer>
 
-<template id="class-row-template">
-  <form class="class-form">
-    <div class="class-form__grid">
-      <div class="field">
-        <label>Course code</label>
-        <input type="text" name="course" placeholder="CSE 4444" required>
-      </div>
-      <div class="field field--narrow">
-        <label>Section</label>
-        <input type="text" name="section" placeholder="2" required>
-      </div>
-      <div class="field">
-        <label>Building</label>
-        <select name="building" required>
-          <option value="Main Campus">Main Campus</option>
-          <option value="FUB">FUB</option>
-          <option value="AB1">AB1</option>
-          <option value="AB2">AB2</option>
-          <option value="AB3">AB3</option>
-        </select>
-      </div>
-      <div class="field field--narrow">
-        <label>Room</label>
-        <input type="text" name="room" placeholder="512" required>
-      </div>
-      <div class="field field--narrow">
-        <label>Start</label>
-        <input type="time" name="start" min="08:30" max="19:50" value="09:00" required>
-      </div>
-      <div class="field field--narrow">
-        <label>End</label>
-        <input type="time" name="end" min="08:30" max="19:50" value="10:20" required>
-      </div>
-      <div class="field field--check">
-        <label class="check"><input type="checkbox" name="lab"> Lab</label>
-      </div>
-    </div>
-    <fieldset class="days-fieldset">
-      <legend>Days</legend>
-      <label class="day-check"><input type="checkbox" name="day" value="S"><span>S</span></label>
-      <label class="day-check"><input type="checkbox" name="day" value="M"><span>M</span></label>
-      <label class="day-check"><input type="checkbox" name="day" value="T"><span>T</span></label>
-      <label class="day-check"><input type="checkbox" name="day" value="W"><span>W</span></label>
-      <label class="day-check"><input type="checkbox" name="day" value="R"><span>R</span></label>
-    </fieldset>
-    <button type="submit" class="btn btn--dark btn--sm">+ Add class</button>
-  </form>
-</template>
-
-<script src="app.js"></script>
-</body>
-</html></main>
-
-<footer class="site-foot">
-  <div class="wrap site-foot__row">
-    <p class="site-foot__note">Built for East West University students. Days follow the EWU academic week — S = Sunday, M = Monday, T = Tuesday, W = Wednesday, R = Thursday. Your routine data stays on this device (nothing is uploaded).</p>
-    <button id="reset-btn" class="link-btn">Clear all data</button>
-  </div>
-  <p class="credit">Made by Md. Lathfan Ibna Eusuf (Lipto)</p>
-</footer>
-
+<!-- CLASS ROW TEMPLATE (used by JS) -->
 <template id="class-row-template">
   <form class="class-form">
     <div class="class-form__grid">
