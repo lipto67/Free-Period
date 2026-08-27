@@ -495,3 +495,4 @@
   renderFriends();
   renderPicker();
 })();
+                             
