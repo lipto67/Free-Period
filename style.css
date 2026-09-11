@@ -323,6 +323,42 @@ a{color:inherit;}
 }
 .no-classes{font-family:var(--mono); font-size:.8rem; color:var(--ink-soft); margin-top:12px;}
 
+/* Below 600px a fixed-column table can't fit a phone screen and the
+   right-hand columns get clipped with no way to scroll to them.
+   Switch to a stacked "card row" layout instead — every field stays
+   fully visible and reachable. */
+@media (max-width:600px){
+  .class-table{border:none;}
+  .class-table thead{
+    position:absolute; width:1px; height:1px; overflow:hidden;
+    clip:rect(0 0 0 0); white-space:nowrap; /* keep for screen readers only */
+  }
+  .class-table tbody{display:block;}
+  .class-table tr{
+    display:block;
+    border:1px solid var(--line-strong);
+    border-radius:var(--radius);
+    background:var(--card);
+    padding:10px 12px;
+    margin-bottom:10px;
+  }
+  .class-table tr:last-child{margin-bottom:0;}
+  .class-table td{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:12px; padding:6px 0; border-bottom:1px solid var(--line);
+    text-align:right;
+  }
+  .class-table tr td:first-child{border-top:none;}
+  .class-table td:last-child{border-bottom:none; justify-content:flex-end;}
+  .class-table td::before{
+    content:attr(data-label);
+    font-family:var(--mono); font-size:.68rem; text-transform:uppercase;
+    letter-spacing:.04em; color:var(--ink-soft); text-align:left;
+    flex:0 0 auto;
+  }
+  .class-table td[data-label=""]::before{content:none;}
+}
+
 /* ---------------- picker ---------------- */
 .picker-list{
   display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr));
@@ -476,4 +512,5 @@ a{color:inherit;}
   .wrap{padding:0 16px;}
   .site-head__row{padding:14px 16px;}
   .credit{padding:0 16px;}
-}
+   }
+   
