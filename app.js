@@ -201,12 +201,12 @@
       .forEach((cls) => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
-          <td>${escapeHTML(cls.course)}${cls.lab ? '<span class="lab-tag">lab</span>' : ""}</td>
-          <td class="mono">${escapeHTML(cls.section)}</td>
-          <td class="mono">${escapeHTML(cls.building)} · ${escapeHTML(cls.room)}</td>
-          <td class="mono">${cls.days.join("")}</td>
-          <td class="mono">${minutesToLabel(timeToMinutes(cls.start))}–${minutesToLabel(timeToMinutes(cls.end))}</td>
-          <td><button type="button" class="del-btn">remove</button></td>
+          <td data-label="Course">${escapeHTML(cls.course)}${cls.lab ? '<span class="lab-tag">lab</span>' : ""}</td>
+          <td class="mono" data-label="Sec">${escapeHTML(cls.section)}</td>
+          <td class="mono" data-label="Building / Room">${escapeHTML(cls.building)} · ${escapeHTML(cls.room)}</td>
+          <td class="mono" data-label="Days">${cls.days.join("")}</td>
+          <td class="mono" data-label="Time">${minutesToLabel(timeToMinutes(cls.start))}–${minutesToLabel(timeToMinutes(cls.end))}</td>
+          <td data-label=""><button type="button" class="del-btn">remove</button></td>
         `;
         tr.querySelector(".del-btn").addEventListener("click", () => {
           friend.classes = friend.classes.filter((c) => c.id !== cls.id);
